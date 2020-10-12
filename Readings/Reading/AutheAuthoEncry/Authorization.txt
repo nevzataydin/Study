@@ -1,0 +1,22 @@
+﻿https://docs.microsoft.com/en-us/aspnet/core/security/authorization/roles?view=aspnetcore-3.1
+
+Simple 
+	Any authenticated user can use that part of the application (like with an [Authorized] tag)
+	For other parts, explict authentication is needed
+
+Role Based
+	Credentials attend to roles (like administrator, user, accountant ets), and those roles know where to access
+	Roles are exposed to the developer through the IsInRole method on the ClaimsPrincipal class.
+
+Claims Based
+	A claim is a name value pair. Server check the corresponding value, and if it is okay, it give you permission
+	for that specific task
+	For example: birthofdate: 1983/3/2 => age is greater then 18 => give permission to see the picture
+
+Policy Based
+	Underneath the covers, role-based authorization and claims-based authorization use 
+		a requirement, 
+		a requirement handler, 
+		and a PRE-CONFIGURED POLICY. 
+	These building blocks support the expression of authorization evaluations in code. 
+	The result is a richer, reusable, testable authorization structure.

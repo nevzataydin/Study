@@ -1,0 +1,65 @@
+Interface:
+	A class without implementation
+	Contains only decleration of
+		Properties
+		Attributes
+		Behaviors (events)
+
+Class
+	Supports inheritance
+	Pass by reference
+	Members by default private
+Struct
+	Doesn't support inheritance
+	Pass by value
+	Members by default public
+
+Boxing: converting value type to reference type
+Unboxing: converting back to its value
+
+Array:
+	Uses vector array for storing
+	Size must be defined
+	Typecasting is not necessary
+ArrayList:
+	Uses linkedlist to store elements
+	No need for size definition
+	Typecasting is necessary
+	
+Serialization
+	Convert some code into its binary format
+		Binary:
+		XML:
+		SOAP:
+
+Parsing
+	Converting string to another datatype
+	Ýnt.Parse(text)
+
+Finalize/Dispose
+	Both of them releases unmanaged resources
+	Finalize doesn't give assurance of garbage collection
+
+IO Classes
+	Streamwriter
+	Streamreader
+	File
+
+
+Synchronous/Asynchronous operations
+
+Async/Await
+	Mostly used for creating asynchronous methods
+	
+Deadlock
+	Multiple processes waiting eachother to complete
+	
+Race condution
+	Two threads access the same resource and try to change at the same time
+	
+Thread pooling
+	A collection of threads that perform tasks without disturbing primary thread.
+	When a thread finishes its work, notifices primary thread
+
+
+

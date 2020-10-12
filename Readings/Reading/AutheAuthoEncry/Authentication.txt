@@ -1,0 +1,96 @@
+
+https://www.c-sharpcorner.com/article/authentication-and-authorization-in-Asp-Net/
+
+
+An ASP.net application has two separate authentication layers. That is because ASP.net is not a standalone product. 
+Rather it is a layer on top of IIS. All requests flow through IIS before they are handed to ASP.net. As a result, 
+IIS can decide to deny access without the ASP.net process even knowing that someone requested a particular page. 
+Here is an overview of the steps in the joint IIS and ASP.net authentication process.
+
+	IIS first checks to make sure the incoming request comes from an IP address that is allowed access to the domain. 
+	If not it denies the request.
+
+	Next IIS performs its own user authentication if it configured to do so. By default IIS allows anonymous access, 
+	so requests are automatically authenticated, but you can change this default on a per - application basis with in IIS.
+	If the request is passed to ASP.net with an authenticated user, ASP.net checks to see whether impersonation is enabled. 
+	If impersonation is enabled, ASP.net acts as though it were the authenticated user. If not ASP.net acts with its 
+	own configured account.
+
+	Finally the identity from step 3 is used to request resources from the operating system. If ASP.net authentication 
+	can obtain all the necessary resources it grants the users request otherwise it is denied. Resources can include 
+	much more than just the ASP.net page itself you can also use .Net's code access security features to extend this 
+	authorization step to disk files, Registry keys and other resources.
+
+
+ASP.NET AUTHENTICATION TYPES
+	Windows authentication
+
+	Password authentication
+
+	Forms authentication
+		When a user requests a page for the application, ASP.NET checks for the presence of a special session cookie. 
+			If the cookie is present, ASP.NET assumes the user is authenticated and processes the request.
+		If the cookie isn't present, ASP.NET redirects the user to a web form you provide
+		You can carry out whatever authentication, checks you like in your form. When the user is authenticated, 
+			you indicate this to ASP.NET by setting a property, which creates the special cookie to handle subsequent requests.
+
+
+https://www.solarwindsmsp.com/blog/network-authentication-methods
+AUTHENTICATION TYPES
+	Password
+
+	Two Factor (2FA)
+		pin and debit card
+		password and phone
+
+	Token
+		Instead of mobile, they use purpose specific build devices. 
+		It could be a dongle or smart card
+
+	Biometric
+		fingerprints, retinal or iris scans, voice recognition, and face detection
+		Hard to install tech, may user doesn't want to share his data to company or government 
+
+	Transaction
+		Server looks user's location, if not match; rise a flag and asks for additional authentication.
+		Doesn't replace password authentication, its merely another security level
+
+	Computer Recognition
+		These systems install a small software plug-in on the user’s computer the first time they login. 
+		The plug-in contains a cryptographic device marker. Next time the user logs in, the marker is 
+		checked to make sure they are on the known device. 
+
+	Captcha
+		completely automated public Turing test to tell computers and humans apart.
+
+	Single Sign on
+		it can also introduce security risks; an unauthorized user who gains access to one system 
+		can now penetrate others. A related technology, single sign-off, logs users out of every 
+		application when they log out of a single one. This bolsters security by making certain that 
+		all open sessions are closed
+
+AUTHENTICATION PROTOCOLS
+	Kerberos
+		It was developed at MIT to provide authentication for UNIX networks. Today, Kerberos is 
+		the default Windows authentication method, and it is also used in Mac OS X and Linux. 
+
+		-First, the client contacts the authentication server, which transmits the username to a key distribution center. 
+		-The key distribution center then issues a time-stamped access ticket, 
+		-which is encrypted by the ticket-granting service and returned to the user. 
+		-Now the user is ready to communicate with the network. 
+		-When the user needs to access another part of the network, they send their ticket to the ticket-granting service, 
+		-which verifies that it’s valid. 
+		-The service then issues a key to the user, 
+		-who sends the ticket and service request to the actual part of the server they need to communicate with.
+
+		Kerberos has some vulnerabilities
+		—it requires the authentication server to be continuously available, 
+		-and it requires clocks on different parts of the network to always be synchronized.
+
+	SSL/TLS (Secure Sockets Layer (SSL) and its successor Transport Layer Security)
+		clients and servers use digital certificates to authenticate each other before connecting
+
+		The server certificate is a small data file saved on the web server. 
+		The certificate links a cryptographic key to the details of the organization that owns the server. 
+		A web browser checks the validity of the certificate before connecting to the server. 
+	
