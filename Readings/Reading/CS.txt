@@ -1,9 +1,23 @@
+Features:
+	Object oriented
+	Managed
+	Type safe
+	Constructors and descructors
+	Cross platform
+
 Interface:
 	A class without implementation
 	Contains only decleration of
 		Properties
 		Attributes
 		Behaviors (events)
+
+Access modifiers
+	Internal: can be use in current assembly/dll/project
+	Public
+	Private
+	Protected: within class and its children
+	Protected internal: protected or internal
 
 Class
 	Supports inheritance

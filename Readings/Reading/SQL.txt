@@ -26,3 +26,15 @@ Durability
 ensures that any transaction committed to the database will not be lost. Durability is ensured through the use 
 of database backups and transaction logs that facilitate the restoration of committed transactions in spite of 
 any subsequent software or hardware failures.
+
+
+http://www.cs.toronto.edu/~nn/csc309-20085/guide/pointbase/docs/html/htmlfiles/dev_dataobjectsFIN.html
+Objects:
+user
+schema
+	table
+		column
+		row
+	view
+	stored procedure
+	trigger

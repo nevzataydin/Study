@@ -1,0 +1,40 @@
+﻿https://www.tutorialsteacher.com/ioc/introduction
+Dependency Injection (DI) is a software design pattern that allows us to develop loosely coupled code. DI enables you to manage your code future changes and other complexity in a better way.
+
+From <https://www.dotnettricks.com/learn/dependencyinjection> 
+https://www.javatpoint.com/java-design-pattern-interview-questions
+https://www.educba.com/design-pattern-interview-questions/
+
+*singleton: create one instance of a class and use everywhere in the project. 
+Example: database connection
+Drawbacks: changing something will impact to all other classes. Does not support inheritance. Can be easily two way binding which is not recommened. Because multiple singleton speaking eachother will out of control in no time.
+
+can be early or lazy instantiation (at load time or when required).
+
+*builder: for creating complex objects step by step. İs independent of other objects.
+İt is designed to solve the issues with the factory and abstract design pattern.
+
+*factory: it provides flexibility. More decoupled code.  A creational design. Creates an object through inheritance and produces only one product. 
+allows sub classes to choose the type of objects to create.
+
+*abstract factory: creates the object through composition and produce families of products. Factory of factories
+
+*observer: one to many. İs usefull when we wanted to be notified when the state of object is changed. Is a behavioral pattern
+The object is called subject and the dependents are called observers.
+
+*strategy:???
+
+*state:???
+
+*null object: null object replaces the null check for the instance variable. İnstead of putting a check for a null value, null object reflects a do nothing relationship. İt can also be used to provide default behavior in case data is not available
+
+*decorator (structural):  add additional functionality to a particular object at runtime. İt wraps the original object through a decorator object.
+
+*prototype: if creating an object is costly, you can clone an existing one and change/work on it.
+
+*delegate:
+
+*plug-ins:
+
+
+https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
