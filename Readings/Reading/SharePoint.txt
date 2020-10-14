@@ -1,0 +1,166 @@
+﻿SharePoint Workflow Forms
+	Task edit
+	Modification
+	Association
+	Installation
+
+WSP
+	WSP is Web Solution Package. 
+		information of resources, 
+		images, 
+		assemblies, 
+		site definitions 
+		and other features that can be mixed with the site.
+
+Why to use SharePoint
+	To substitute current business file server
+	It is a secure method
+	Saves storage space
+	Easily archived documents
+	Economical
+	Can be tailored
+
+Team Site
+	This feature permits users to externally access the site.
+
+Document Management Pros
+	Security
+	Multitasking with other personnel
+	Content management and web app development
+
+Scheduling Tools (need more research)
+	used to update or assign gant calendar's multi level tasks
+
+SharePoint Application Examples
+	Document sharing
+	Intranet, extranet, internet
+	Alliance with different tools
+	Website development
+	Buisness intelligence
+
+Content Database Data:
+	Report models
+	Published reports information
+	permissions on different tasks
+	application properties
+	data resource sharing
+	resource management
+
+https://www.tutorialspoint.com/sharepoint/sharepoint_rest_apis.htm
+Server Object Model 
+	Classes
+		SPWeb (site collection)
+		SPSite (site)
+	Can be used
+		ASP.NET application inside the same application pool that is used by SharePoint.
+		client application such as console or Windows forms or a WPF app that will run on a SharePoint server.
+		Cannot use to remotely connect to sharepoint server
+	Technical
+		Microsoft.SharePoint is the main assembly/library
+		SPSite, SPWeb, SPList, SPDocumentLibrary, and SPListItem.
+https://www.tutorialspoint.com/sharepoint/sharepoint_rest_apis.htm
+Client Object Model (CSOM)
+	is a web service called Client.svc, which lives in the _vti_bin virtual directory. To communicate
+		.NET Managed code.
+		JavaScript.
+		
+
+Callout Function (need more research)
+	navigation links management
+	addition of novel items
+	task monitoring
+
+SharePoint Sites (need more research)
+	Team site
+	My site
+	Public site
+
+Delegate Control  (need more research)
+	It allows replacement with custom controls
+
+Web Interface
+	anything you see in sharepoint whit a browser
+
+Farm
+	Is a group of sharepoint servers
+
+Zones
+	Used to access to one single web application
+	Custom
+	Internet
+	Intranet
+	Extranet
+	Default
+
+LINQ (need more research) 
+	Object-oriented queries
+	provides compile time facilities.
+
+SharePoint Feature
+	-A functional component (like search, navigation, custom code)
+	-can be activated and deactivated at scopes 
+	-Feature defines menu commands, page templates, link commands, 
+	page instances, list instances, list definitions, event handlers, etc.
+	-Can be defined with 
+		-elements.xml: it makes SP aware of features installed 
+		-feature.xml: includes details of feature functionality
+
+Timer Job
+	-yes: 13, 16, 19 no: 365
+	-timer job runs in a specific Windows service for SharePoint Server
+	-The SharePoint Timer service (SPTimerv4) runs timer jobs.
+	-does infrastructure tasks
+	-perform tasks for web applications
+	-A timer job contains a definition of the service to run and specifies how frequently the service is started
+
+https://www.c-sharpcorner.com/article/introduction-of-sharepoint-event-receivers/
+Event Receivers.
+	Resides
+		By default, Event Receivers are asynchronous - they run under the SharePoint Timer Service (OWSTIMER.exe). 
+	Method triggers when an action occures
+		Adding
+		Updating
+		Deleting
+		Moving
+		Checking In
+		Checking Out.
+	Types
+		Synchronous Event Receiver
+			Before events fire before the corresponding event action occurs and before SharePoint has written any data to the content database.
+		Asynchronous Event Receiver	
+			After events fire after the event action has completed and after SharePoint has written to the content database to commit the event action.
+	Classes
+		Base class: Microsoft.SharePoint.SPEventReceiverBase.
+		Base class for List Item: Microsoft.SharePoint.SPItemEventReceiver
+		Base class for SharePoint List: Microsoft.SharePoint.SPListEventReceiver
+		Base class for Email: Microsoft.SharePoint.SPEmailEventReceiver
+	Base Classes
+		SPItemEventReceiver
+		SPListEventReceiver
+		SPEmailEventReceiver
+		SPWebEventReceiver
+		SPWorkflowEventReceiver
+		SPFeatureReceiver
+			Activated-Deactivated
+			Installed-Uninstalled
+			Upgrading
+	Cancel event (with synchronous)
+		public override void ItemAdding(SPItemEventProperties properties) {  
+			base.ItemAdding(properties); 
+			properties.Cancel = True; 
+	Scope
+		ListUrl works only if feature has Scope=”Web”. In case the feature has Scope=”Site”, event receiver is fired for every list and library, ListUrl is ignored
+
+https://docs.microsoft.com/en-us/sharepoint/search/search-architecture-overview
+Search
+	Databases
+		Crawl: Stores tracking information and historical information about crawled items such as documents and URLs
+		Link: Stores unprocessed information that is extracted by the content processing component and information about search clicks.
+		Analytics reporting: Stores the results of usage analysis.
+		Search admin: Stores search configuration data.
+	Why to scale search topology
+		content or user numbers increased
+		Search solution could have a bottleneck
+		Performance requirements changed.
+	How to scale
+		

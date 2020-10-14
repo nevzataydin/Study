@@ -1,0 +1,138 @@
+http://www.cs.toronto.edu/~nn/csc309-20085/guide/pointbase/docs/html/htmlfiles/dev_dataobjectsFIN.html
+Objects:
+user
+schema
+	table
+		column
+		row
+	view
+	stored procedure
+	trigger
+
+
+
+
+
+
+DML: data manipulation language. For rows
+	Select, insert, update, delete
+	
+DDL: data definition language. For tables
+	Create, alter, drop, truncate
+	
+DCL: data control language. Secure database object  attaining roles
+	Grant, revoke, deny
+	
+TCL: transactional control language
+	Begin-commit-rolback transaction
+	
+Cascading referential integrity constraint
+	They are foreign key constraints. Triggered when related id deleted or modified.
+	Set Null: when deleted or updated it sets to null
+	Cascade: if id deleted, related rows also deleted, if changed also changed
+	Set Default: when deleted or modified, set to default value
+	No Action: this is default action. When deleted or updated an error will be rised
+	
+Where/Having clauses
+	Where: 
+		filter individual rows
+		Must be used before group by (therefore)
+		Can be used with select, update, delete
+	Having:
+		Filter groups
+		Must be used after group by (therefore). And slower in this manner
+		Can be used with select
+	In i query first use where to filter, then having to group
+	
+Prime
+	A table can only have one
+	Accept no null values
+	Must be unique
+	Creates unique clustered index 
+	
+Normalization: Is a database design to
+	Reduce redundancy
+	Dividing tables and defining relationships between them
+	The objective is to isolate data so taht additions, deletions and modifications of a field can be made in just one table and then propagate through the rest of the database via the defined relationships
+	
+Normalization forms
+	-Eliminate repeating groups: make table for preset string values
+	-Eliminate redundant data: make table for multi selects
+	-Eliminate columns not dependent on key: If attributes do not contribute to a description of the key, remove them to a sparate table
+		BCNF (boyce-codd normal form): If there are serious dependencies between candidate key attributes, separate them
+	-Isolate independent multiple relationships: no table may contain two or more 1:n or n:m relationships that are not directly related
+	-Isolate semantically related multiple relationships: 
+		ONF (optimal normal form): a model limited to only simple (elemental) facts, as expressed in object role model notation
+		DKNF (domain-key normal form): a model free from all modification anomalies.
+	These steps are cumulative. To optaine 3th step, you must fulfill first two
+	
+Cursor
+	A cursor is a database object used by applications to manipulate data in a set on a row-by-row basis, instead of the typical SQL commands that operate on all the rows in the set at one time.
+	In order to work with a cursor we need to perform some steps in the following order:
+		Declare cursor
+		Open cursor
+		Fetch row from the cursor Process fetched row Close cursor
+		Deallocate cursor
+
+DBCC commands: database consistency checker
+	DBCC CHECKDB – Ensures that tables in the DB and the indexes are correctly linked.
+	DBCC CHECKALLOC – To check that all pages in a DB are correctly allocated.
+	DBCC CHECKFILEGROUP – Checks all tables file group for any damage.
+	
+Linked server
+	You can query from one server to another sql server and even create combine query
+	
+Collation: data sort and comperition
+	Case sensitivity
+	Accent sensitivity: áó
+	Kana sensitivity
+	Width sensitivity: single byte or double byte
+	
+Nolock
+	Multiple process can access data at the same time
+	Select statements have shared lock. So they can read at the same time without nolock.
+	
+Update_statistics
+	Used when a large processing of data has occured (deletion, modification, bulk copy) 
+	Updates the indexes on these tables accordingly
+	
+Sub-query: Nested select
+	Properties
+		A subquery must be enclosed in the parenthesis.
+		The subquery must be put in the right hand of the comparison operator, and
+		subquery cannot contain an ORDER-BY clause.
+		A query can contain more than one sub-queries.
+	Types
+		Single-row subquery, where the subquery returns only one row.
+		Multiple-row subquery, where the subquery returns multiple rows,.and
+		Multiple column subquery, where the subquery returns multiple columns.
+		
+SQL Profiler
+	Monitoring tool
+	
+Authentication models
+	Windows mode
+	Mixed mode (windows + sql)
+	Changed from sql enterprise manager > tools > sql server configuration properties > security page
+	
+User names and passwords store
+	Masterdb > sysxlogins
+	
+SQL Server Agent
+	Full-function scheduling engine.
+	Allows you to schedule your own jobs and scripts
+	
+Log shipping
+	Is the process of automating the backup of database and transaction log files on a production sql server, and then restoring them onto a standby server.
+	
+Rename DB
+	Sp_renamedb 'oldname', 'newname'
+
+Replication
+	Types
+		Snapshot: 
+			Best used for replicating data that changes infrequently and holds most up to date values.
+		Transactional
+			Ýnitial snapshot is taken and sent to subscribers. And when a change has been done, that  change send to subscribers immidiately
+		Merge
+			Sending complete changes to subscribers when they are online, at a specific time etc

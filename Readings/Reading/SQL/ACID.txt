@@ -1,40 +1,28 @@
-ACID, Defined
+ÔªøACID, Defined
 Each of the four ACID attributes follow well-defined standards:
 
 Atomicity 
-states that database modifications must follow an ìall or nothingî rule. Each transaction is said to be atomic. 
+states that database modifications must follow an ‚Äúall or nothing‚Äù rule. Each transaction is said to be atomic. 
 If one part of the transaction fails, the entire transaction fails. It is critical that the database management 
 system maintains the atomic nature of transactions in spite of any DBMS, operating system, or hardware failure.
 
 Consistency 
 states that only valid data will be written to the database. If, for some reason, a transaction is executed 
-that violates the databaseís consistency rules, the entire transaction will be rolled back, and the database 
+that violates the database‚Äôs consistency rules, the entire transaction will be rolled back, and the database 
 will be restored to a state consistent with those rules. On the other hand, if a transaction successfully 
 executes, it will take the database from one state that is consistent with the rules to another state that 
 is also consistent with the rules.
 
 Isolation 
-requires that multiple transactions occurring at the same time not impact each otherís execution. For example, 
+requires that multiple transactions occurring at the same time not impact each other‚Äôs execution. For example, 
 if Joe issues a transaction against a database at the same time that Mary issues a different transaction, both 
-transactions should operate on the database in an isolated manner. The database should either perform Joeís 
-entire transaction before executing Maryís, or vice-versa. This prevents Joeís transaction from reading 
-intermediate data produced as a side effect of part of Maryís transaction that will not eventually be committed 
-to the database. Note that the isolation property does not ensure which transaction will execute firstómerely 
+transactions should operate on the database in an isolated manner. The database should either perform Joe‚Äôs 
+entire transaction before executing Mary‚Äôs, or vice-versa. This prevents Joe‚Äôs transaction from reading 
+intermediate data produced as a side effect of part of Mary‚Äôs transaction that will not eventually be committed 
+to the database. Note that the isolation property does not ensure which transaction will execute first‚Äîmerely 
 that transactions will not interfere with each other
 
 Durability 
 ensures that any transaction committed to the database will not be lost. Durability is ensured through the use 
 of database backups and transaction logs that facilitate the restoration of committed transactions in spite of 
 any subsequent software or hardware failures.
-
-
-http://www.cs.toronto.edu/~nn/csc309-20085/guide/pointbase/docs/html/htmlfiles/dev_dataobjectsFIN.html
-Objects:
-user
-schema
-	table
-		column
-		row
-	view
-	stored procedure
-	trigger
