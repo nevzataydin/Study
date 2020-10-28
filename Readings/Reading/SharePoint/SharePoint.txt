@@ -153,9 +153,29 @@ Event Receivers.
 
 https://docs.microsoft.com/en-us/sharepoint/search/search-architecture-overview
 Search
+	https://sharepointadmintrick.blogspot.com/2016/03/difference-between-basic-search-center.html
+	Basic vs Enterprise
+		-main difference is customizing
+		Basic Search:
+			-crawl on site and lists
+			-results shown on a not easily customizable page
+			-cannot show results in other places
+		Enterprise Search:
+			-crawl on basic + across site collection and web applications
+			-very customizable serch page, show results in other places
+			-better scalability
+		FAST Search
+			-basic + document previes, deep refiners, user context, visual best bets
+			-much more highly scalable than basic
+		Hybrid Search
+			-Crawl file and documents across SP on premises and 365
+			-Cloud hybrid: index is on cloud
+			-Hybrid federated: two indexes on both sides
 	Databases
-		Crawl: Stores tracking information and historical information about crawled items such as documents and URLs
-		Link: Stores unprocessed information that is extracted by the content processing component and information about search clicks.
+		Crawl: Stores tracking information and historical information about 
+			crawled items such as documents and URLs
+		Link: Stores unprocessed information that is extracted by the content 
+			processing component and information about search clicks.
 		Analytics reporting: Stores the results of usage analysis.
 		Search admin: Stores search configuration data.
 	Why to scale search topology
@@ -163,4 +183,52 @@ Search
 		Search solution could have a bottleneck
 		Performance requirements changed.
 	How to scale
-		
+		Redesign Questions
+			How much content do i have
+			What size search architecture should I scale to
+			Hardware requirements
+	Search Database Topologies
+		-There must be paired hosts (replicas) for fault tolerance
+		-Small Topology
+			-Host A
+				-Application Server 1
+					-Query Processing
+					-Replica (index partition 0)
+				-Application Server 2	
+					Crawl
+					Admin
+					Analytics
+					Content Processing
+			-Host H
+				-Databasees
+					Search Admin DB
+					Link DB
+					Crawl DB
+					Analytics DB
+		-Medium Topology
+			-Host A (x2 => 4 index)
+				-Application Server 1
+					-Query Processing
+					-Replica  (index partition 0)
+				-Application Server 2
+					-Replica  (index partition 1)
+			-Host C
+				-Application Server 1
+					-Analytics
+					-Content Processing
+				-Application Server 2
+					-Crawl
+					-Admin
+					-Content Processing
+			-Host H (as above)
+		-Large Topology
+			-10 indexes
+			-more distrubited analytics, Content, Crawl, Admin
+		-Extra Large Topology
+			-25 indexes
+			-every service is seperated
+				1x Query Processing
+				2x Crawl
+				1x Admin
+				3x Content Processing
+				2x Analytics
